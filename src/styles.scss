@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+.row {
+  margin: 0;
+}
+.col-a {
+  max-width: 35px;
+  flex: 0 0 35px;
+  text-align: center;
+  padding: 0;
+}
+.col-b {
+  margin-left: 5px;
+}
+.red-border-right {
+  border-right: 1px solid red;
+}
+.red-border-left {
+  border-left: 1px solid red;
+}
