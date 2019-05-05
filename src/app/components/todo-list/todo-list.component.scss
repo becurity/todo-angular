@@ -1,0 +1,11 @@
+.todo-list {
+  border-radius: 5px;
+  min-width: 350px;
+  max-width: 700px;
+  width: 400px;
+  resize: horizontal;
+  overflow: hidden;
+  -webkit-box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
+  -moz-box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
+  box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
+}

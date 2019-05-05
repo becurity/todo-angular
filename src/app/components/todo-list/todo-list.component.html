@@ -1,0 +1,21 @@
+<div class="todo-list" [style.background]="todoList.background" >
+  <div class="header row" [style.background]="blendColors(todoList.background, '#000000', 20)">
+    <div class="col-1 col-a">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="col col-b">
+      {{todoList.title}}
+    </div>
+    <div class="col-1 col-a">
+      <i class="fas fa-plus"></i>
+    </div>
+  </div>
+  <app-todo *ngFor="let todo of todoList.todos; let index = $index;" [todo]="todo" (addTodo)="addNewTodo($event)"></app-todo>
+  <div class="footer row">
+    <div class="col col-a red-border-right">
+      <i class="far fa-trash-alt"></i>
+    </div>
+    <div class="col-10 col-b red-border-left">
+    </div>
+  </div>
+</div>
