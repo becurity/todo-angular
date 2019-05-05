@@ -7,10 +7,15 @@
       {{todoList.title}}
     </div>
     <div class="col-1 col-a">
-      <i class="fas fa-plus"></i>
+      <i class="fas fa-plus" (click)="addNewTodo(todoList.currentTodo ? todoList.currentTodo : todoList.todos[todoList.todos.length - 1])"></i>
     </div>
   </div>
-  <app-todo *ngFor="let todo of todoList.todos; let index = $index;" [todo]="todo" (addTodo)="addNewTodo($event)"></app-todo>
+  <app-todo
+    *ngFor="let todo of todoList.todos;"
+    [todo]="todo"
+    (addTodo)="addNewTodo($event)"
+    (click)="setCurrentTodo(todo)"
+  ></app-todo>
   <div class="footer row">
     <div class="col col-a red-border-right">
       <i class="far fa-trash-alt"></i>

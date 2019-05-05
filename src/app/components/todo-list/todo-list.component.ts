@@ -45,4 +45,7 @@ export class TodoListComponent implements OnInit {
     }
     return hex;
   }
+  setCurrentTodo(todo: Todo) {
+    this.todoList.currentTodo = todo;
+  }
 }
