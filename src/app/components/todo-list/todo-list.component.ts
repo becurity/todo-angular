@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {TodoList} from '../../model/TodoList';
 import {Todo} from '../../model/Todo';
 
@@ -9,6 +9,8 @@ import {Todo} from '../../model/Todo';
 })
 export class TodoListComponent implements OnInit {
   @Input() todoList: TodoList;
+  @ViewChild('main') main;
+  @ViewChild('header') header;
   colors = [
     '#CCFFCC',
     '#FFFF99',
@@ -21,6 +23,7 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.initDrag();
   }
   addNewTodo(todo: Todo) {
     const nextIndex = this.todoList.todos.indexOf(todo) + 1;
@@ -63,5 +66,49 @@ export class TodoListComponent implements OnInit {
   }
   setBackground(color: string) {
     this.todoList.background = color;
+  }
+  initDrag() {
+    let pos1 = 0;
+    let pos2 = 0;
+    let pos3 = 0;
+    let pos4 = 0;
+    const element = this.main.nativeElement;
+    const header = this.header.nativeElement;
+    header.onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      let top = element.offsetTop - pos2;
+      let left = element.offsetLeft - pos1;
+      if (top < 0) { top = 0; }
+      if (left < 0) { left = 0; }
+      if (top > window.innerHeight - element.clientHeight) { top = window.innerHeight - element.clientHeight; }
+      if (left > window.innerWidth - element.clientWidth) { left = window.innerWidth - element.clientWidth; }
+      element.style.top = top + 'px';
+      element.style.left = left + 'px';
+    }
+
+    function closeDragElement() {
+      /* stop moving when mouse button is released:*/
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
   }
 }

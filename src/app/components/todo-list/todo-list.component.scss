@@ -8,6 +8,7 @@
   -webkit-box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
   -moz-box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
   box-shadow: -12px 7px 40px -6px rgba(153,144,153,1);
+  position: absolute;
 }
 .drop-down-trigger::after {
   content: none;

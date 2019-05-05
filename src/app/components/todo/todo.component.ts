@@ -36,6 +36,7 @@ export class TodoComponent implements OnInit {
     this.autosize();
   }
   autosize() {
+    // TODO autosize on vid with change
     const $this = this;
     setTimeout(() => {
       $this.editor.nativeElement.style.cssText = 'height:auto; padding:0';
