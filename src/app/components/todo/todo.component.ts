@@ -16,6 +16,13 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.autosize();
+    const $this = this;
+    if (this.todo.what.length === 0) {
+      setTimeout(() => {
+        $this.editor.nativeElement.focus();
+      }, 0);
+
+    }
   }
   editorKeyDown(event) {
     if (event.which !== 13) { return; }
