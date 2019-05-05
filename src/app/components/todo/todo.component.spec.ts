@@ -4,7 +4,6 @@ import {
 
 import { TodoComponent } from './todo.component';
 import {FormsModule} from '@angular/forms';
-import {until} from 'selenium-webdriver';
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -26,6 +25,7 @@ describe('TodoComponent', () => {
     fixture = TestBed.createComponent(TodoComponent);
     component = fixture.componentInstance;
     component.todo = {
+      id: new Date().getTime(),
       what: 'this is a task',
       isDone: false
     };
