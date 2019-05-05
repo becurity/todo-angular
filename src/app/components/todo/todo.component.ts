@@ -11,6 +11,7 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Output() addTodo = new EventEmitter();
   @ViewChild('editor') editor;
+  toolsIsVisible = false;
   constructor() { }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class TodoComponent implements OnInit {
     if (event.which !== 13) { return; }
     event.preventDefault();
     event.stopPropagation();
-    this.addTodo.emit();
+    this.addTodo.emit(this.todo);
     this.editor.nativeElement.blur();
   }
   editorKeyUp() {
@@ -38,5 +39,11 @@ export class TodoComponent implements OnInit {
     if (!this.todo.isDone) {
       this.autosize();
     }
+  }
+  showTools() {
+    this.toolsIsVisible = true;
+  }
+  hideTools() {
+    this.toolsIsVisible = false;
   }
 }
