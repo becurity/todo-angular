@@ -8,7 +8,7 @@ import {Todo} from '../../model/Todo';
 })
 export class TodoComponent implements OnInit {
 
-  @Input() toto: Todo;
+  @Input() todo: Todo;
   @Output() addTodo = new EventEmitter();
   @ViewChild('editor') editor;
   constructor() { }
@@ -34,8 +34,8 @@ export class TodoComponent implements OnInit {
     }, 0);
   }
   changeStatus(isDone: boolean) {
-    this.toto.isDone = isDone;
-    if (!this.toto.isDone) {
+    this.todo.isDone = isDone;
+    if (!this.todo.isDone) {
       this.autosize();
     }
   }

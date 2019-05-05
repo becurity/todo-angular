@@ -1,18 +1,18 @@
 <div class="main">
-  <div id="not-done" class="row" *ngIf="!toto.isDone">
+  <div id="not-done" class="row" *ngIf="!todo.isDone">
     <div class="col-1 icon">
       <i class="far fa-square" (click)="changeStatus(true)"></i>
     </div>
     <div class="col-10 what">
-      <textarea #editor (keydown)="editorKeyDown($event)" (keyup)="editorKeyUp()" [(ngModel)]="toto.what" rows="1"> </textarea>
+      <textarea #editor (keydown)="editorKeyDown($event)" (keyup)="editorKeyUp()" [(ngModel)]="todo.what" rows="1"> </textarea>
     </div>
   </div>
-  <div id="done" class="row" *ngIf="toto.isDone">
+  <div id="done" class="row" *ngIf="todo.isDone">
     <div class="col-1 icon">
       <i class="far fa-check-square" (click)="changeStatus(false)"></i>
     </div>
     <div class="col-10 what">
-      <span>{{toto.what}}</span>
+      <span>{{todo.what}}</span>
     </div>
   </div>
 </div>
