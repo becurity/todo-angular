@@ -68,20 +68,24 @@ export class TodoListComponent implements OnInit {
     this.todoList.background = color;
   }
   initDrag() {
-    let pos1 = 0;
-    let pos2 = 0;
-    let pos3 = 0;
-    let pos4 = 0;
+    const $this = this;
+    let posX = this.todoList.positionPercentX / 100 * window.innerWidth;
+    let posY = this.todoList.positionPercentY / 100 * window.innerHeight;
+    let posXSaved = posX;
+    let posYSaved = posY;
     const element = this.main.nativeElement;
     const header = this.header.nativeElement;
     header.onmousedown = dragMouseDown;
+
+    element.style.top = posY + 'px';
+    element.style.left = posX + 'px';
 
     function dragMouseDown(e) {
       e = e || window.event;
       e.preventDefault();
       // get the mouse cursor position at startup:
-      pos3 = e.clientX;
-      pos4 = e.clientY;
+      posXSaved = e.clientX;
+      posYSaved = e.clientY;
       document.onmouseup = closeDragElement;
       // call a function whenever the cursor moves:
       document.onmousemove = elementDrag;
@@ -91,16 +95,18 @@ export class TodoListComponent implements OnInit {
       e = e || window.event;
       e.preventDefault();
       // calculate the new cursor position:
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      let top = element.offsetTop - pos2;
-      let left = element.offsetLeft - pos1;
+      posX = posXSaved - e.clientX;
+      posY = posYSaved - e.clientY;
+      posXSaved = e.clientX;
+      posYSaved = e.clientY;
+      let top = element.offsetTop - posY;
+      let left = element.offsetLeft - posX;
       if (top < 0) { top = 0; }
       if (left < 0) { left = 0; }
       if (top > window.innerHeight - element.clientHeight) { top = window.innerHeight - element.clientHeight; }
       if (left > window.innerWidth - element.clientWidth) { left = window.innerWidth - element.clientWidth; }
+      $this.todoList.positionPercentX = left * 100 / window.innerWidth;
+      $this.todoList.positionPercentY = top * 100 / window.innerHeight;
       element.style.top = top + 'px';
       element.style.left = left + 'px';
     }

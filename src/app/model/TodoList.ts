@@ -6,4 +6,6 @@ export interface TodoList {
   color: string;
   todos: (Todo)[];
   currentTodo: Todo;
+  positionPercentX: number;
+  positionPercentY: number;
 }
