@@ -1,25 +1,16 @@
 <div class="main" (mouseenter)="showTools()" (mouseleave)="hideTools()">
-  <div id="not-done" class="row" *ngIf="!todo.isDone">
+  <div class="row">
     <div class="col col-a red-border-right">
-      <i class="far fa-square" (click)="changeStatus(true)"></i>
+      <i class="far fa-square" (click)="changeStatus()" *ngIf="!todo.isDone"></i>
+      <i class="far fa-check-square" (click)="changeStatus()" *ngIf="todo.isDone"></i>
     </div>
     <div class="col col-b what red-border-left">
-      <textarea #editor (keydown)="editorKeyDown($event)" (keyup)="editorKeyUp()" [(ngModel)]="todo.what" rows="1"> </textarea>
+      <textarea #editor (keydown)="editorKeyDown($event)" (keyup)="editorKeyUp()" [(ngModel)]="todo.what" rows="1" [hidden]="todo.isDone"> </textarea>
+      <textarea #editorView disabled [(ngModel)]="todo.what" rows="1" [hidden]="!todo.isDone" class="done"> </textarea>
     </div>
     <div class="col col-a">
       <i class="far fa-trash-alt" [hidden]="!toolsIsVisible"></i>
       <i class="far fa-bell" [hidden]="!toolsIsVisible"></i>
-    </div>
-  </div>
-  <div id="done" class="row" *ngIf="todo.isDone">
-    <div class="col col-a red-border-right">
-      <i class="far fa-check-square" (click)="changeStatus(false)"></i>
-    </div>
-    <div class="col col-b red-border-left what">
-      <span>{{todo.what}}</span>
-    </div>
-    <div class="col col-a">
-      <i class="far fa-trash-alt" [hidden]="!toolsIsVisible"></i>
     </div>
   </div>
 </div>

@@ -11,12 +11,11 @@ export class TodoListComponent implements OnInit {
   @Input() todoList: TodoList;
   colors = [
     '#CCFFCC',
-    '#FF6699',
-    '#999999',
     '#FFFF99',
-    '#0099CC',
-    '#9999FF',
     '#ffffff',
+    '#FF6699',
+    '#9999FF',
+    '#0099CC',
     '#000000'
   ];
   constructor() { }

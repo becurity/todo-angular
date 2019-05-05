@@ -11,6 +11,7 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Output() addTodo = new EventEmitter();
   @ViewChild('editor') editor;
+  @ViewChild('editorView') editorView;
   toolsIsVisible = false;
   constructor() { }
 
@@ -39,13 +40,12 @@ export class TodoComponent implements OnInit {
     setTimeout(() => {
       $this.editor.nativeElement.style.cssText = 'height:auto; padding:0';
       $this.editor.nativeElement.style.cssText = 'height:' + $this.editor.nativeElement.scrollHeight + 'px';
+      $this.editorView.nativeElement.style.cssText = 'height:auto; padding:0';
+      $this.editorView.nativeElement.style.cssText = 'height:' + $this.editor.nativeElement.scrollHeight + 'px';
     }, 0);
   }
-  changeStatus(isDone: boolean) {
-    this.todo.isDone = isDone;
-    if (!this.todo.isDone) {
-      this.autosize();
-    }
+  changeStatus() {
+    this.todo.isDone = !this.todo.isDone;
   }
   showTools() {
     this.toolsIsVisible = true;

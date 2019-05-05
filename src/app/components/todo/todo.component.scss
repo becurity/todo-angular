@@ -6,6 +6,9 @@
     .what {
       span {
         overflow-wrap: break-word;
+        display: block;
+        width: 100%;
+        max-width: 100%;
       }
       textarea {
         padding: 0;
@@ -21,10 +24,7 @@
       }
     }
   }
-  #done {
-    .what {
-      text-decoration: line-through;
-      color: gray;
-    }
+  .done {
+    text-decoration: line-through;
   }
 }
