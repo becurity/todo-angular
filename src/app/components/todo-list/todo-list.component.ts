@@ -9,6 +9,16 @@ import {Todo} from '../../model/Todo';
 })
 export class TodoListComponent implements OnInit {
   @Input() todoList: TodoList;
+  colors = [
+    '#CCFFCC',
+    '#FF6699',
+    '#999999',
+    '#FFFF99',
+    '#0099CC',
+    '#9999FF',
+    '#ffffff',
+    '#000000'
+  ];
   constructor() { }
 
   ngOnInit() {
@@ -51,5 +61,8 @@ export class TodoListComponent implements OnInit {
   getBackGround(percent: number) {
     return 'linear-gradient(to bottom, ' +
     `${this.todoList.background} 0%, ${this.blendColors(this.todoList.background, '#00000', percent)} 100%)`;
+  }
+  setBackground(color: string) {
+    this.todoList.background = color;
   }
 }

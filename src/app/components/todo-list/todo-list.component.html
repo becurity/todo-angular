@@ -1,7 +1,16 @@
-<div class="todo-list" [style.background]="getBackGround(15)" >
-  <div class="header row" [style.background]="getBackGround(20)">
+<div class="todo-list" [style.background]="getBackGround(25)" >
+  <div class="header row" [style.background]="getBackGround(35)">
     <div class="col-1 col-a">
-      <i class="fas fa-times"></i>
+      <div ngbDropdown class="d-inline-block">
+        <i class="fas fa-sliders-h drop-down-trigger" ngbDropdownToggle></i>
+        <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+          <ul>
+            <li *ngFor="let color of colors" [style.background]="color" (click)="setBackground(color)">&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+      </div>
+
+
     </div>
     <div class="col col-b">
       {{todoList.title}}
