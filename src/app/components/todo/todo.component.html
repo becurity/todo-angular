@@ -6,9 +6,9 @@
     <div class="col col-b what red-border-left">
       <textarea #editor (keydown)="editorKeyDown($event)" (keyup)="editorKeyUp()" [(ngModel)]="todo.what" rows="1"> </textarea>
     </div>
-    <div class="col col-a" [hidden]="!toolsIsVisible">
-      <i class="far fa-trash-alt"></i>
-      <i class="far fa-bell"></i>
+    <div class="col col-a">
+      <i class="far fa-trash-alt" [hidden]="!toolsIsVisible"></i>
+      <i class="far fa-bell" [hidden]="!toolsIsVisible"></i>
     </div>
   </div>
   <div id="done" class="row" *ngIf="todo.isDone">
@@ -18,8 +18,8 @@
     <div class="col col-b red-border-left what">
       <span>{{todo.what}}</span>
     </div>
-    <div class="col col-a" [hidden]="!toolsIsVisible">
-      <i class="far fa-trash-alt"></i>
+    <div class="col col-a">
+      <i class="far fa-trash-alt" [hidden]="!toolsIsVisible"></i>
     </div>
   </div>
 </div>
