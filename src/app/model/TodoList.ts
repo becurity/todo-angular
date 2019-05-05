@@ -5,4 +5,5 @@ export interface TodoList {
   background: string;
   color: string;
   todos: (Todo)[];
+  currentTodo: Todo;
 }
