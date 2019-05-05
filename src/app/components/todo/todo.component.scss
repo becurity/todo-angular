@@ -1,0 +1,39 @@
+.main {
+  border-bottom: 1px solid cornflowerblue;
+  resize: horizontal;
+  overflow: hidden;
+  .row {
+    margin: 0;
+    .icon {
+      border-right: 1px solid red;
+      max-width: 35px;
+      flex: 0 0 35px;
+      padding: 0;
+      text-align: center;
+    }
+    .what {
+      margin-left: 5px;
+      border-left: 1px solid red;
+      span {
+        overflow-wrap: break-word;
+      }
+      textarea {
+        padding: 0;
+        border-width: 0;
+        width: 100%;
+        resize: none;
+        overflow:hidden;
+        display: block;
+      }
+      textarea:focus {
+        outline: 0;
+      }
+    }
+  }
+  #done {
+    .what {
+      text-decoration: line-through;
+      color: gray;
+    }
+  }
+}
