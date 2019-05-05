@@ -48,4 +48,8 @@ export class TodoListComponent implements OnInit {
   setCurrentTodo(todo: Todo) {
     this.todoList.currentTodo = todo;
   }
+  getBackGround(percent: number) {
+    return 'linear-gradient(to bottom, ' +
+    `${this.todoList.background} 0%, ${this.blendColors(this.todoList.background, '#00000', percent)} 100%)`;
+  }
 }
