@@ -1,2 +1,4 @@
-
+<div class="container app" (click)="onClick($event)" #container>
+  <app-todo-list *ngFor="let todoList of todoLists" [todoList]="todoList"></app-todo-list>
+</div>
 <router-outlet></router-outlet>
